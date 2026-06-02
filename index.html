@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)file:///C:/Users/Lenovo/Downloads/My%20portfolio.html#work -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dav.UI — UI Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./Dav.UI — UI Designer_files/css2" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #0e0d0b;
+    --paper: #f5f2ec;
+    --accent: #c8451a;
+    --muted: #8a867e;
+    --line: rgba(14,13,11,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+    --instrument: 'Instrument Serif', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    mix-blend-mode: multiply;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .nav-links a { opacity: 0.5; transition: opacity 0.2s; }
+  .nav-links a:hover { opacity: 1; }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    padding: 120px 60px 80px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+  .hero-tag {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .hero-tag span {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--muted);
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(72px, 10vw, 124px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    margin-bottom: 48px;
+  }
+  .hero-name em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .hero-desc {
+    max-width: 340px;
+    line-height: 1.8;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 48px;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 6px;
+    transition: gap 0.3s;
+    cursor: pointer;
+  }
+  .hero-cta:hover { gap: 22px; }
+
+  .hero-right {
+    padding: 120px 40px 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-counter {
+    text-align: right;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding-top: 40px;
+  }
+  .hero-counter .big {
+    font-family: var(--serif);
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--ink);
+    display: block;
+  }
+  .hero-disciplines { display: flex; flex-direction: column; gap: 0; }
+  .discipline-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    transition: padding-left 0.3s;
+    cursor: default;
+  }
+  .discipline-row:last-child { border-bottom: 1px solid var(--line); }
+  .discipline-row:hover { padding-left: 12px; }
+  .d-name { font-size: 13px; font-weight: 500; }
+  .d-year { font-size: 10px; letter-spacing: 0.1em; color: var(--muted); }
+
+  .marquee-wrap {
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0;
+    background: var(--ink);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 22s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-item {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.4;
+    padding: 0 36px;
+    flex-shrink: 0;
+  }
+  .marquee-item.accent { color: var(--accent); opacity: 1; }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 40px 40px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-num {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    padding: 16px 0 32px;
+    display: block;
+  }
+  .section-link {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .section-link:hover { opacity: 1; }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .work-item {
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: var(--paper);
+  }
+  .work-item:nth-child(even) { border-right: none; }
+  .work-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .work-thumb {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    display: block;
+  }
+  .work-thumb-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .work-item:hover .work-thumb-inner { transform: scale(1.04); }
+
+  .thumb-1 { background: #0c0c0cd1; }
+  .thumb-2 { background: #053a22; }
+  .thumb-3 { background: #0f2027; }
+  .thumb-4 { background: #c17203; }
+  .thumb-5 { background: #c8451a;}
+  .thumb-6 { background:#2d1b4e; }
+
+  .thumb-content {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .mock-ui {
+    width: 80%;
+    height: 75%;
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+  .mock-bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.15); width: 40%; }
+  .mock-bar.wide { width: 70%; }
+  .mock-bar.short { width: 25%; }
+  .mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; flex: 1; }
+  .mock-card { background: rgba(255,255,255,0.08); border-radius: 6px; }
+  .mock-accent { height: 3px; width: 100%; background: var(--accent); border-radius: 2px; margin-bottom: 4px; }
+  .mock-circle {
+    position: absolute;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    right: -30px; bottom: -30px;
+  }
+  .mock-circle-inner {
+    position: absolute;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,69,26,0.4);
+    right: -10px; bottom: -10px;
+  }
+  .mock-lines { display: flex; flex-direction: column; gap: 7px; flex: 1; margin-top: 4px; }
+  .mock-line { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); }
+  .mock-chart { display: flex; align-items: flex-end; gap: 5px; flex: 1; padding-top: 8px; }
+  .mock-col { background: rgba(255,255,255,0.15); border-radius: 3px 3px 0 0; flex: 1; }
+  .mock-col.hi { background: var(--accent); opacity: 0.7; }
+  .mock-dash {
+    position: absolute;
+    top: 10px; right: 12px;
+    display: flex; gap: 6px;
+  }
+  .mock-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+
+  .work-meta {
+    padding: 24px 28px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .work-tag {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .work-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .work-arrow {
+    width: 40px; height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+  .work-item:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+  }
+  .work-meta {
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+      .work-item:hover .work-meta {
+        opacity: 1;
+      }
+
+  .work-item:hover .work-arrow {
+    background: var(--ink);
+    color: var(--paper);
+    transform: rotate(45deg);
+  }
+
+  .about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--line);
+  }
+  .about-left {
+    padding: 80px 60px 80px 40px;
+    border-right: 1px solid var(--line);
+  }
+  .about-body {
+    font-family: var(--instrument);
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+  .about-body em { color: var(--accent); font-style: italic; }
+  .about-right {
+    padding: 80px 40px 80px 60px;
+    display: flex;
+    flex-direction: column;
+  }
+  .stat-row {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .stat-row:first-child { border-top: 1px solid var(--line); }
+  .stat-val {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .stat-val sup { font-size: 18px; font-weight: 400; vertical-align: super; }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    max-width: 140px;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  .process-section {
+    border-bottom: 1px solid var(--line);
+    padding: 0 40px 80px;
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+  }
+  .process-item {
+    padding: 40px 32px 40px 0;
+    border-right: 1px solid var(--line);
+  }
+  .process-item:last-child { border-right: none; padding-right: 0; }
+  .process-item:first-child { padding-left: 0; }
+  .process-item + .process-item { padding-left: 32px; }
+  .p-num { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+  .p-title { font-family: var(--serif); font-size: 20px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.02em; }
+  .p-desc { font-size: 12px; line-height: 1.75; color: var(--muted); }
+
+  .contact-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 100px 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 80px;
+  }
+  .contact-big {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 110px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+    max-width: 700px;
+  }
+  .contact-big em { font-style: italic; color: var(--accent); }
+  .contact-right { text-align: right; }
+  .contact-email {
+    font-size: 14px;
+    border-bottom: 1px solid rgba(245,242,236,0.3);
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    display: block;
+  }
+  .contact-email:hover { opacity: 1; }
+  .contact-socials { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .social-link {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+  }
+  .social-link:hover { opacity: 1; }
+
+  .footer-bar {
+    background: var(--ink);
+    color: var(--paper);
+    border-top: 1px solid rgba(245,242,236,0.1);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.35;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 32px; height: 32px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), width 0.3s, height 0.3s, opacity 0.3s;
+    opacity: 0.25;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    .hero, .about-section { grid-template-columns: 1fr; }
+    .hero-left { border-right: none; padding: 120px 24px 60px; }
+    .hero-right { padding: 40px 24px 60px; }
+    .work-grid { grid-template-columns: 1fr; }
+    .work-item { border-right: none; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .section-header, .process-section, nav { padding-left: 24px; padding-right: 24px; }
+    nav { padding: 20px 24px; }
+    .contact-section { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bar { flex-direction: column; gap: 8px; padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot" style="left: 547px; top: 737px; transform: scale(1);"></div>
+<div class="cursor-ring" id="cursorRing" style="left: 533.998px; top: 723.996px; width: 32px; height: 32px; opacity: 0.25;"></div>
+
+<nav>
+  <div class="nav-logo">David I.</div>
+  <ul class="nav-links">
+    <li><a href="file:///C:/Users/Lenovo/Downloads/My%20portfolio.html#work">Work</a></li>
+    <li><a href="file:///C:/Users/Lenovo/Downloads/My%20portfolio.html#about">About</a></li>
+    <li><a href="file:///C:/Users/Lenovo/Downloads/My%20portfolio.html#process">Process</a></li>
+    <li><a href="file:///C:/Users/Lenovo/Downloads/My%20portfolio.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag"><span></span>UI / Product Designer</p>
+    <h1 class="hero-name">
+      Making<br><em>things</em><br>click.
+    </h1>
+    <p class="hero-desc">
+      I design interfaces that feel inevitable — products where complexity dissolves into clarity, and every interaction earns trust.
+    </p>
+    <a href="file:///C:/Users/Lenovo/Downloads/My%20portfolio.html#work" class="hero-cta">
+      View selected work <span>→</span>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-counter">
+      <span class="big">4</span>
+      years crafting digital products
+    </div>
+    <div class="hero-disciplines">
+      <div class="discipline-row">
+        <span class="d-name">Product Design</span>
+        <span class="d-year">Primary</span>
+      </div>
+      <div class="discipline-row">
+        <span class="d-name">Design Systems</span>
+        <span class="d-year">Primary</span>
+      </div>
+      <div class="discipline-row">
+        <span class="d-name">Interaction Design</span>
+        <span class="d-year">Secondary</span>
+      </div>
+      <div class="discipline-row">
+        <span class="d-name">Brand Identity</span>
+        <span class="d-year">Selective</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Figma</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Prototyping</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">User Research</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Design Systems</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Motion Design</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Accessibility</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">UI Architecture</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Component Libraries</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Figma</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Prototyping</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">User Research</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Design Systems</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Motion Design</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Accessibility</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">UI Architecture</span>
+    <span class="marquee-item accent">✦</span><span class="marquee-item">Component Libraries</span>
+  </div>
+</div>
+
+<section id="work">
+  <div class="section-header">
+    <span class="section-num">01 — Selected Work</span>
+    <a href="file:///C:/Users/Lenovo/Downloads/My%20portfolio.html#" class="section-link">All projects →</a>
+  </div>
+  <div style="padding: 0 40px; border-bottom: 1px solid var(--line);">
+    <span class="section-title reveal visible">Portfolio</span>
+  </div>
+
+  <!-- SUGGESTION: To make the portfolio look better, add hover effects to work items for interactivity -->
+  <!-- HOW TO: Add the following CSS to the <style> block (around line 343, after .work-item styles) to add a subtle shadow and scale on hover -->
+  <!-- CODE TO ADD:
+  .work-item:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+  }
+  -->
+  <!-- This enhances the visual feedback when hovering over project thumbnails -->
+  <div class="work-grid">
+    <div class="work-item reveal visible">
+      <div class="work-thumb">
+        <div class="work-thumb-inner thumb-1">
+          <div class="thumb-content">
+            <!-- SUGGESTION: Add lazy loading and improved performance for images -->
+            <!-- HOW TO: Add loading="lazy" attribute to each <img> tag to defer loading until the image is near the viewport -->
+            <!-- EXAMPLE: <img loading="lazy" src="..." ...> -->
+            <!-- This improves page load speed, especially with multiple images -->
+            <!-- DELETE: Remove the entire mock-ui div and all its contents to eliminate the fake UI elements -->
+            <!-- EDIT: Replace the mock-ui div with an <img> tag using your actual project screenshot/image -->
+            <!-- The img should use: width: 80%; height: 75%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); -->
+            <!-- This maintains the same size, positioning, and styling as the mock UI -->
+            <img loading="lazy" src="./Dav.UI — UI Designer_files/image sample 1.jpg" alt="Finitrixity Analytics Dashboard" style="width: 80%; height: 75%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(20, 1, 1, 0.08);">
+          </div>
+        </div>
+      </div>
+      <!-- SUGGESTION: Add subtle animation to work-meta for better user experience -->
+      <!-- HOW TO: Add the following CSS to the <style> block (around line 349, after .work-arrow styles) to fade in the meta text on hover -->
+      <!-- CODE TO ADD:
+      .work-meta {
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+      .work-item:hover .work-meta {
+        opacity: 1;
+      }
+      -->
+      <!-- This makes the project details more prominent on hover -->
+      <div class="work-meta">
+        <div>
+          <p class="work-tag">SaaS · 2025</p>
+          <h3 class="work-title">Finitrixity Analytics<br>Dashboard</h3>
+        </div>
+        <div class="work-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="work-item reveal visible" style="transition-delay:0.1s">
+      <div class="work-thumb">
+        <div class="work-thumb-inner thumb-2">
+          <div class="thumb-content">
+            <!-- DELETE: Remove the entire mock-ui div and all its contents to eliminate the fake UI elements -->
+            <!-- EDIT: Replace the mock-ui div with an <img> tag using your actual project screenshot/image -->
+            <!-- The img should use: width: 80%; height: 75%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); -->
+            <!-- This maintains the same size, positioning, and styling as the mock UI -->
+            <img src="./Dav.UI — UI Designer_files/image sample 2.jpg" alt="Plant Health App" style="width: 80%; height: 75%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(8, 3, 50, 0.08);">
+            
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div>
+          <p class="work-tag">Mobile · 2025</p>
+          <h3 class="work-title">Plant Health<br>App</h3>
+        </div>
+        <div class="work-arrow">→</div>
+      </div>
+    </div>
+
+    <div class="work-item reveal visible" style="transition-delay:0.05s">
+      <div class="work-thumb">
+        <div class="work-thumb-inner thumb-3">
+          <div class="thumb-content">
+            <!-- DELETE: Remove the entire mock-ui div and all its contents to eliminate the fake UI elements -->
+            <!-- EDIT: Replace the mock-ui div with an <img> tag using your actual project screenshot/image -->
+            <!-- The img should use: width: 80%; height: 75%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); -->
+            <!-- This maintains the same size, positioning, and styling as the mock UI -->
+            <img src="./Dav.UI — UI Designer_files/image sample 3.jpg" alt="Foxico Travel Agency" style="width: 80%; height: 75%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+            
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div>
+          <p class="work-tag">Travels and Tour · 2026</p>
+          <h3 class="work-title">Foxico<br>Traveling Agency</h3>
+        </div>
+        <div class="work-arrow">→</div>
+      </div>
+    </div>
+
+
+    <div class="work-item reveal visible" style="transition-delay:0.15s">
+      <div class="work-thumb">
+        <div class="work-thumb-inner thumb-6">
+          <div class="thumb-content">
+            <!-- DELETE: Remove the entire mock-ui div and all its contents to eliminate the fake UI elements -->
+            <!-- EDIT: Replace the mock-ui div with an <img> tag using your actual project screenshot/image -->
+            <!-- The img should use: width: 80%; height: 75%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); -->
+            <!-- This maintains the same size, positioning, and styling as the mock UI -->
+            <img src="./Dav.UI — UI Designer_files/image sample 6.jpg" alt="Foxico Travel Agency" style="width: 80%; height: 75%; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+            
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div>
+          <p class="work-tag">Finance · 2026</p>
+          <h3 class="work-title">Finance<br>Tracking App</h3>
+        </div>
+        <div class="work-arrow">→</div>
+      </div>
+    </div>
+
+    
+</div></section>
+
+<section id="about" class="about-section">
+  <div class="about-left">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:48px;">
+      <span class="section-num">02 — About</span>
+    </div>
+    <p class="about-body reveal visible">
+      I believe <em>great UI design is mostly invisible</em> — it’s the absence of confusion, the speed of recognition, the satisfaction of a task completed without friction.
+    </p>
+    <p class="about-body reveal visible" style="transition-delay:0.1s">
+      Based in Nigeria. Working with <em>startups, scale-ups,</em> and the occasional company that finally decided their product deserves better.
+    </p>
+  </div>
+  
+</section>
+
+<section id="process" class="process-section">
+  <div class="section-header" style="padding-left:0;padding-right:0;">
+    <span class="section-num">03 — Process</span>
+  </div>
+  <div style="padding:0;border-bottom:1px solid var(--line);">
+    <span class="section-title reveal visible">How I work</span>
+  </div>
+  <div class="process-grid">
+    <div class="process-item reveal visible">
+      <p class="p-num">01</p>
+      <h3 class="p-title">Discover</h3>
+      <p class="p-desc">Understanding the problem before touching any tool. User interviews, competitive audits, stakeholder mapping — the invisible work that makes everything else faster.</p>
+    </div>
+    <div class="process-item reveal visible" style="transition-delay:0.08s">
+      <p class="p-num">02</p>
+      <h3 class="p-title">Define</h3>
+      <p class="p-desc">Turning research chaos into a clear design brief. What does success look like? What are we NOT designing? Constraints sharpened here save months later.</p>
+    </div>
+    <div class="process-item reveal visible" style="transition-delay:0.16s">
+      <p class="p-num">03</p>
+      <h3 class="p-title">Design</h3>
+      <p class="p-desc">Low fidelity to high fidelity without skipping steps. Every component earns its place. Every interaction has intention. Then test, break, and improve.</p>
+    </div>
+    <div class="process-item reveal visible" style="transition-delay:0.24s">
+      <p class="p-num">04</p>
+      <h3 class="p-title">Deliver</h3>
+      <p class="p-desc">Handoffs that actually work — annotated specs, component libraries, motion guidelines. I stay through launch and the first retrospective.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div>
+    <h2 class="contact-big reveal visible">
+      Let’s make<br>something<br><em>worth using.</em>
+    </h2>
+  </div>
+  <div class="contact-right">
+    <a href="mailto:noa@novaris.design" class="contact-email">dezignsdavid@gmail.com</a>
+    <div class="contact-socials">
+      <a href="file:///C:/Users/Lenovo/Downloads/My%20portfolio.html#" class="social-link">Behance</a>
+      <a href="file:///C:/Users/Lenovo/Downloads/Documents%20and%20Images/IYANUOLUWA%20DAVID%20ARIWODOLA.pdf" class="social-link">Read.cv</a>
+      <a href="file:///C:/Users/Lenovo/Downloads/My%20portfolio.html#" class="social-link">LinkedIn</a>
+      <a href="file:///C:/Users/Lenovo/Downloads/My%20portfolio.html#" class="social-link">Twitter</a>
+    </div>
+  </div>
+</section>
+
+<div class="footer-bar">
+  <span>© 2026 David I.</span>
+  <span>Nigeria — Available </span>
+  <span>Built with intention</span>
+</div>
+
+<script>
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = (mx - 3) + 'px';
+    dot.style.top = (my - 3) + 'px';
+  });
+
+  (function animRing() {
+    rx += (mx - rx - 16) * 0.12;
+    ry += (my - ry - 16) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  })();
+
+  document.querySelectorAll('a, .work-item, .discipline-row').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.style.width = '54px';
+      ring.style.height = '54px';
+      ring.style.opacity = '0.5';
+      dot.style.transform = 'scale(2)';
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.width = '32px';
+      ring.style.height = '32px';
+      ring.style.opacity = '0.25';
+      dot.style.transform = 'scale(1)';
+    });
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+
+</body></html>
